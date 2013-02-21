@@ -1,6 +1,5 @@
 <?php
 
-echo "hallo123";die();
 
 $base = new base();
 $base->index();
