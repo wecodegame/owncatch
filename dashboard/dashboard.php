@@ -1,8 +1,5 @@
 <?php
 
-var_dump($_REQUEST);
-var_dump($_ENV);
-var_dump($_SERVER);
 $template = "dashboard";
 
 if (!empty($_GET)) {

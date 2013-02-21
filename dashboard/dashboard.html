@@ -3,6 +3,14 @@
       <title></title>
    </head>
    
+                <?php 
+                    if ($_SERVER["HTTP_HOST"] == "www.owncatch.de") {
+                        $redirect = "dashboard/"; 
+                    }  else {
+                        $redirect = "http://localhost/dashboard/"; 
+                    }
+                ?>
+                
    <body style="width: 950px;height:950px;margin: auto;border: 1px solid #bbb;">
 
       <div id="left_column" style="float:left;width: 160px;height: 700px;margin-top: 20px;margin-left: 20px;">

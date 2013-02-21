@@ -4,7 +4,7 @@ class database {
     
     function connect() {
         
-        if (isset($_SERVER["HTTP_HOST"]) && $_SERVER["HTTP_HOST"] == "owncatch.de") {    
+        if (isset($_SERVER["HTTP_HOST"]) && $_SERVER["HTTP_HOST"] == "www.owncatch.de") {    
             $hostname="db457523083.db.1and1.com";
             $database="db457523083";
             $username="dbo457523083";
@@ -17,9 +17,8 @@ class database {
             $password="kevinriggs";
         }
         
-        
         $link = mysql_connect($hostname, $username, $password);
-
+        
         if (!$link) return false;
 
         if (!$db_selected = mysql_select_db($database, $link)) {
@@ -27,7 +26,7 @@ class database {
         }
 
 
-        if (!mysql_select_db("thegame")) {
+        if (!mysql_select_db($database)) {
             return false;
         }
 
@@ -36,10 +35,6 @@ class database {
     
     
     function update() {
-        $hostname="db457523083.db.1and1.com";
-        $database="db457523083";
-        $username="dbo457523083";
-        $password="kevinriggs";
 
     }
     
@@ -60,10 +55,9 @@ class database {
 
             $i++;
         }
-        var_dump($users);
+
         return $users;
     }
-    
 }
 
 

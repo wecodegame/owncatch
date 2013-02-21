@@ -1,26 +1,46 @@
 <html>
 	<head>
             <title>testgame</title>
+            <script type="text/javascript" src="jquery-1.8.1.min.js"></script>
         </head>
 	
 	<body style="font-family:arial;font-size:13px;">
-
-		<form action="http://localhost/thegame/index.php" method="post">
+                <?php 
+                    if ($_SERVER["HTTP_HOST"] == "www.owncatch.de") {
+                        $redirect = "http://www.owncatch.de/index.php";
+                    } else {
+                        $redirect = "http://localhost/thegame/index.php";
+                    }
                     
+                    echo "<form id='form' action='$redirect' method='POST'>";
+                ?>
+                   
                     
-		<div style="position:absolute;top:50%;left:50%;width:20em;height:18em;margin-left:-15em;margin-top:-10em;border: 2px solid #BFBFBF; background-color: #D4EBFC;">
-                    <table width="100%" style="padding: 20px;">
+		<div id='form' style="position:absolute;top:50%;left:50%;width:20em;height:18em;margin-left:-15em;margin-top:-10em;border: 2px solid #BFBFBF; background-color: #D4EBFC;">
+                    <table id='table' width="100%" style="padding: 20px;">
 				<tr style="margin-bottom: 15px;"><td style="text-align:center;border: 2px solid #BFBFBF;background-color:#C6CCD1"><b>Login</b></td></tr>
 				<tr><td>User:</td></tr>
 				<tr><td><input id="user" type="text" name="user" value="" /></td></tr>
 				<tr><td>&nbsp;</td></tr>
 				<tr><td>Password:</td></tr>
 				<tr><td><input id="password" type="password" name="password" value="" /></td></tr>
-				<tr><td><input id="submit" type="submit" name="absenden" value="GO!"/></td></tr>
+				<tr><td><a onclick='submit();' href='javascript:void(0);'/>abschicken</a></td></tr>
 			</table>
 		</div>
-                    
+                <div id='test' style='widht: 300px;height: 200px; border: 3px solid red;display:none;'>Hallo Welt</div>
+                   
 		</form>
+                
+                <script type='text/javascript'>
+                    
+                   function submit() {  
+                       
+                       $("#table").hide("slow");
+                       $("#test").delay(500).show("slow");
+                       
+                   }
+                    
+                </script>
             		
 		
 	</body>
