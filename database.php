@@ -3,9 +3,9 @@
 class database {
     
     function connect() {
-        $hostname="db457523083.db.1and1.com";
-        $database="db457523083";
-        $username="dbo457523083";
+        $hostname="localhost";
+        $database="thegame";
+        $username="root";
         $password="kevinriggs";
 
         $link = mysql_connect($hostname, $username, $password);
