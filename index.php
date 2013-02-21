@@ -13,9 +13,8 @@ class base {
       $login = new login();
 
       $loginAccepted = $login->checkPost();
-
       if ($loginAccepted != null) {
-         $this->delegate301("http://www.owncatch.de/dashboard/dashboard");
+         $this->delegate301("http://localhost/thegame/dashboard/dashboard.php");
       }
 
    }

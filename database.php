@@ -3,13 +3,23 @@
 class database {
     
     function connect() {
-        $hostname="localhost";
-        $database="thegame";
-        $username="root";
-        $password="kevinriggs";
-
-        $link = mysql_connect($hostname, $username, $password);
         
+        if (isset($_SERVER["HTTP_HOST"]) && $_SERVER["HTTP_HOST"] == "owncatch.de") {    
+            $hostname="db457523083.db.1and1.com";
+            $database="db457523083";
+            $username="dbo457523083";
+            $password="kevinriggs";
+            
+        } else {
+            $hostname="localhost";
+            $database="thegame";
+            $username="root";
+            $password="kevinriggs";
+        }
+        
+        
+        $link = mysql_connect($hostname, $username, $password);
+
         if (!$link) return false;
 
         if (!$db_selected = mysql_select_db($database, $link)) {
@@ -17,7 +27,7 @@ class database {
         }
 
 
-        if (!mysql_select_db("db457523083")) {
+        if (!mysql_select_db("thegame")) {
             return false;
         }
 
@@ -31,21 +41,10 @@ class database {
         $username="dbo457523083";
         $password="kevinriggs";
 
-        $link = mysql_connect($hostname, $username, $password);
-
-        if (!$link) return false;
-
-        if (!$db_selected = mysql_select_db($database, $link)) {
-            return false;
-        }
-
-
-        if (!mysql_select_db("db457523083")) {
-            return false;
-        }
-        
-        return true;
     }
+    
+    
+    
     
     
     function getResults($tbl, $column = "", $where = "") {
@@ -61,7 +60,7 @@ class database {
 
             $i++;
         }
-
+        var_dump($users);
         return $users;
     }
     
