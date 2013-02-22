@@ -13,5 +13,5 @@ if (!empty($_GET)) {
 
 
 
-include($template . ".html");
+include("../templates/" . $template . ".html");
 ?>

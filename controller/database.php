@@ -16,7 +16,7 @@ class database {
             $username="root";
             $password="kevinriggs";
         }
-        
+
         $link = mysql_connect($hostname, $username, $password);
         
         if (!$link) return false;
@@ -42,16 +42,17 @@ class database {
     
     
     
-    function getResults($tbl, $column = "", $where = "") {
+    function getResults($tbl, $column = "*", $where = "") {
        
-        $ergebnis = mysql_query("SELECT * FROM " . $tbl);
+        $ergebnis = mysql_query("SELECT " . $column . " FROM " . $tbl . $where);
         $users    = array();
 
         $i = 0;
 
         while($row = mysql_fetch_object($ergebnis)) {
-            $users[$i][]  = $row->user;
-            $users[$i][]  = $row->password;
+            $users[$i]['id']  = $row->id;
+            $users[$i]['user']  = $row->user;
+            $users[$i]['password']  = $row->password;
 
             $i++;
         }

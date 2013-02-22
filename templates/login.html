@@ -1,7 +1,7 @@
 <html>
 	<head>
             <title>testgame</title>
-            <script type="text/javascript" src="jquery-1.8.1.min.js"></script>
+            <script type="text/javascript" src="templates/scripts/jquery-1.8.1.min.js"></script>
         </head>
 	
 	<body style="font-family:arial;font-size:13px;">
@@ -33,11 +33,9 @@
                 
                 <script type='text/javascript'>
                     
-                   function submit() {  
-                       
-                       $("#table").hide("slow");
-                       $("#test").delay(500).show("slow");
-                       
+                   function submit() {
+                      alert($("#form").length);
+                        $("#form").submit();
                    }
                     
                 </script>
