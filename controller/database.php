@@ -56,7 +56,7 @@ class database {
 
             $i++;
         }
-
+       
         return $users;
     }
 }

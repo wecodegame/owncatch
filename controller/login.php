@@ -10,11 +10,12 @@ class login {
       include("database.php");
 
       $this->db = new database();
+      $this->db->connect();
       
       /* read out cookie if user already logged in*/
       if (false == empty($_COOKIE["users"])) {
           $userId = stripslashes($_COOKIE["users"]);
-          
+
           /* compare DB Entries if user really exists */
           if (true == $this->doesUserExist($userId)) {
              
@@ -38,10 +39,6 @@ class login {
       }
  
       if (!empty($_POST["user"]) && !empty($_POST["password"])) {
-
-          if (!$this->db->connect()) {
-             return false;
-          }
           
           /* compare Form data with database entries */
           $users = $this->db->getResults("users");
@@ -52,6 +49,7 @@ class login {
 
                   if ($user["password"] == $_POST["password"]) {
                      
+                     setcookie("users", $user["id"], time()+60*60*3);
                      $this->redirect();
                   }
               }
