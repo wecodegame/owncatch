@@ -1,21 +1,11 @@
 <html>
 	<head>
-            <title>testgame</title>
+            <title>{{ name }} </title>
             <script type="text/javascript" src="templates/scripts/jquery-1.8.1.min.js"></script>
         </head>
 	
 	<body style="font-family:arial;font-size:13px;">
-                <?php 
-                    if ($_SERVER["HTTP_HOST"] == "www.owncatch.de") {
-                        $redirect = "http://www.owncatch.de/index.php";
-                    } else {
-                        $redirect = "http://localhost/thegame/index.php";
-                    }
-                    
-                    echo "<form id='form' action='$redirect' method='POST'>";
-                ?>
-                   
-                    
+  
 		<div id='form' style="position:absolute;top:50%;left:50%;width:20em;height:18em;margin-left:-15em;margin-top:-10em;border: 2px solid #BFBFBF; background-color: #D4EBFC;">
                     <table id='table' width="100%" style="padding: 20px;">
 				<tr style="margin-bottom: 15px;"><td style="text-align:center;border: 2px solid #BFBFBF;background-color:#C6CCD1"><b>Login</b></td></tr>

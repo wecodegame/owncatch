@@ -6,7 +6,7 @@ class login {
    private $db = null;
    
    function getLoginStatus() {
-      
+       
       include("database.php");
 
       $this->db = new database();
@@ -31,9 +31,10 @@ class login {
    
    
    function checkPost() {
-    
-      include("templates/login.html");
-
+                  
+      $param = array("name" => "123");
+      base::setTwigEngine("login.html", $param);
+      
       if (empty($_POST)) {
          return false;
       }
