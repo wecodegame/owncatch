@@ -7,7 +7,10 @@ $base->index();
 class base {
    
    function index () {
-
+      
+      include 'Twig/lib/Twig/Autoloader.php';
+      Twig_Autoloader::register();
+      
       include("controller/login.php");
       
       $login = new login();
@@ -16,12 +19,9 @@ class base {
    }
    
    
-    static function setTwigEngine($tpl, $vars) {
+    static function setTwigEngine($tpl, $vars = array()) {
 
-            // include and register Twig auto-loader
-      include 'Twig/lib/Twig/Autoloader.php';
-      
-      Twig_Autoloader::register();
+      // include and register Twig auto-loader
 
       try {
         // specify where to look for templates

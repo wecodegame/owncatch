@@ -31,7 +31,7 @@ class login {
    
    
    function checkPost() {
-                  
+
       $param = array("name" => "123");
       base::setTwigEngine("login.html", $param);
       
@@ -51,8 +51,11 @@ class login {
                   if ($user["password"] == $_POST["password"]) {
                      
                      setcookie("users", $user["id"], time()+60*60*3);
-                     $this->redirect();
+                     $this->redirect($user["id"]);
                   }
+              } else {
+                 base::setTwigEngine("login.html", array("error" => true));
+                 break;
               }
           }  
       }
@@ -71,9 +74,9 @@ class login {
    }
    
    
-   private function redirect() {
+   private function redirect($userId) {
 
-      Header("Location: http://localhost/thegame/controller/dashboard.php");
+      Header("Location: http://localhost/thegame/controller/dashboard.php" . $userId);
       exit();
    }
 }

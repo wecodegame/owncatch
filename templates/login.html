@@ -5,29 +5,36 @@
         </head>
 	
 	<body style="font-family:arial;font-size:13px;">
-  
-		<div id='form' style="position:absolute;top:50%;left:50%;width:20em;height:18em;margin-left:-15em;margin-top:-10em;border: 2px solid #BFBFBF; background-color: #D4EBFC;">
-                    <table id='table' width="100%" style="padding: 20px;">
-				<tr style="margin-bottom: 15px;"><td style="text-align:center;border: 2px solid #BFBFBF;background-color:#C6CCD1"><b>Login</b></td></tr>
-				<tr><td>User:</td></tr>
-				<tr><td><input id="user" type="text" name="user" value="" /></td></tr>
-				<tr><td>&nbsp;</td></tr>
-				<tr><td>Password:</td></tr>
-				<tr><td><input id="password" type="password" name="password" value="" /></td></tr>
-				<tr><td><a onclick='submit();' href='javascript:void(0);'/>abschicken</a></td></tr>
-			</table>
-		</div>
-                <div id='test' style='widht: 300px;height: 200px; border: 3px solid red;display:none;'>Hallo Welt</div>
-                   
+      
+      <form id="form" action="http://localhost/thegame/index.php" method="POST">
+         
+         <div style="position:absolute;top:50%;left:50%;width:20em;height:18em;margin-left:-15em;margin-top:-10em;">
+            
+            <div style="border: 2px solid #BFBFBF; background-color: #D4EBFC;">
+               {% if error %}
+               <div id="error" style="color:red;font-weight:bold;padding-top: 10px;height: 30px;text-align:center;border: 1px solid red; background-color: #F9C0C0;">Falsche Eingabe!...nochmal bitte...</div>
+               {% endif %}
+               <table id='table' width="100%" style="padding: 20px;">
+                  <tr style="margin-bottom: 15px;"><td style="text-align:center;border: 2px solid #BFBFBF;background-color:#C6CCD1"><b>Login</b></td></tr>
+                  <tr><td>User:</td></tr>
+                  <tr><td><input id="user" type="text" name="user" value="" /></td></tr>
+                  <tr><td>&nbsp;</td></tr>
+                  <tr><td>Password:</td></tr>
+                  <tr><td><input id="password" type="password" name="password" value="" /></td></tr>
+                  <tr><td><a onclick='submit();' href='javascript:void(0);'/>abschicken</a></td></tr>
+               </table>
+            </div>
+         </div>
+            
 		</form>
                 
-                <script type='text/javascript'>
-                    
-                   function submit() {      
-                        $("#form").submit();
-                   }
-                    
-                </script>
+       <script type='text/javascript'>
+
+          function submit() {      
+               $("#form").submit();
+          }
+          
+       </script>
             		
 		
 	</body>
