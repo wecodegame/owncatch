@@ -34,14 +34,7 @@ class database {
     }
     
     
-    function update() {
-
-    }
-    
-    
-    
-    
-    
+ 
     function getResults($tbl, $column = "*", $where = "") {
        
         $ergebnis = mysql_query("SELECT " . $column . " FROM " . $tbl . $where);
@@ -56,12 +49,7 @@ class database {
 
             $i++;
         }
-       
+
         return $users;
     }
 }
-
-
-
-
-?>

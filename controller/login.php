@@ -1,4 +1,3 @@
-
 <?php
 
 class login {
@@ -54,10 +53,11 @@ class login {
                      $this->redirect($user["id"]);
                   }
               } else {
-                 base::setTwigEngine("login.html", array("error" => true));
-                 break;
+                  continue;
               }
-          }  
+          }
+          
+          base::setTwigEngine("login.html", array("error" => true));
       }
    }
    
@@ -75,7 +75,7 @@ class login {
    
    
    private function redirect($userId) {
-
+       var_dump($userId);
       Header("Location: http://localhost/thegame/controller/dashboard.php" . $userId);
       exit();
    }
