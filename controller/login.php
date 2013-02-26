@@ -6,11 +6,6 @@ class login {
    
    function getLoginStatus() {
        
-      include("database.php");
-
-      $this->db = new database();
-      $this->db->connect();
-      
       /* read out cookie if user already logged in*/
       if (false == empty($_COOKIE["users"])) {
           $userId = stripslashes($_COOKIE["users"]);
@@ -19,7 +14,7 @@ class login {
           if (true == $this->doesUserExist($userId)) {
              
              /* redirect to mainpage */
-             $this->redirect();
+             $this->redirect($_COOKIE["users"]);
           }
           
       } else {
@@ -75,8 +70,8 @@ class login {
    
    
    private function redirect($userId) {
-       var_dump($userId);
-      Header("Location: http://localhost/thegame/controller/dashboard.php" . $userId);
+
+      Header("Location: http://localhost/thegame/controller/dashboard.php?id=" . $userId);
       exit();
    }
 }

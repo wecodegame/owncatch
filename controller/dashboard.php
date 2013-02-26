@@ -1,17 +1,48 @@
 <?php
 
-$template = "dashboard";
+include("database.php");
+include("../index.php");
 
-if (!empty($_GET)) {
-   $template = $_GET["tmpl"];
+$mainpage = new mainpage();
+$mainpage->index();
+
+class mainpage {
+      
+   private $db = null;
+   private $user = array();
    
-   if ($_GET["tmpl"] == "fleets") {
-       
-       $menu->getFleetMenu();
+   function index() {
+
+      include("../templates/dashboard.html");
+
+      if (!isset($_GET["id"]) || empty($_GET["id"])) {
+         return false;
+      }
+      
+      $this->getUserData($_GET["id"]);
+      
+      $this->setTemplateVariables();
    }
+   
+   
+   private function getUserData($id) {
+      
+      if (empty($id)) {
+         return false;
+      }
+      
+      
+      $this->user = $this->db->getUserData($id);
+   }
+   
+   
+   private function setTemplateVariables() {
+      
+      
+      base::setTwigEngine("dashboard.html", $this->user);
+      
+   }
+   
 }
 
-
-
-include("../templates/" . $template . ".html");
 ?>

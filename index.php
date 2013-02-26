@@ -8,6 +8,11 @@ class base {
    
    function index () {
       
+      include("database.php");
+
+      $this->db = new database();
+      $this->db->connect();
+      
       include 'Twig/lib/Twig/Autoloader.php';
       Twig_Autoloader::register();
       
