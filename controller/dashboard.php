@@ -1,17 +1,10 @@
 <?php
 
-include("database.php");
-include("../index.php");
 
-$mainpage = new mainpage();
-$mainpage->index();
-
-class mainpage {
-      
-   private $db = null;
-   private $user = array();
-   
+class dashboard extends base{
    function index() {
+      
+      $this->connect();
 
       include("../templates/dashboard.html");
 
@@ -30,7 +23,6 @@ class mainpage {
       if (empty($id)) {
          return false;
       }
-      
       
       $this->user = $this->db->getUserData($id);
    }

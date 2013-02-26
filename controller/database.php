@@ -3,7 +3,7 @@
 class database {
     
     function connect() {
-        
+        echo "class database connect";
         if (isset($_SERVER["HTTP_HOST"]) && $_SERVER["HTTP_HOST"] == "www.owncatch.de") {    
             $hostname="db457523083.db.1and1.com";
             $database="db457523083";

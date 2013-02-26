@@ -4,11 +4,13 @@
 $base = new base();
 $base->index();
 
-class base {
+class test {
+   
+   public $db = null;
    
    function index () {
       
-      include("database.php");
+      include_once("controller/database.php");
 
       $this->db = new database();
       $this->db->connect();
