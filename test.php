@@ -13,6 +13,8 @@ class base {
    function __construct() {
       include("controller/database.php");
       include("controller/dashboard.php");
+      include 'Twig/lib/Twig/Autoloader.php';
+      Twig_Autoloader::register();
    }
   
    function connect() {
@@ -26,6 +28,30 @@ class base {
 
       Header("Location: http://localhost/thegame/controller/dashboard.php?id=" . $userId);
       exit();
+   }
+   
+   
+   static function setTwigEngine($tpl, $vars = array()) {
+
+      // include and register Twig auto-loader
+
+      try {
+        // specify where to look for templates
+        $loader = new Twig_Loader_Filesystem('templates');
+        
+        // initialize Twig environment
+        $twig = new Twig_Environment($loader);
+
+        // load template
+        $template = $twig->loadTemplate($tpl);
+
+        // set template variables
+        // render template
+        echo $template->render($vars);
+                
+      } catch (Exception $e) {
+        die ('ERROR: ' . $e->getMessage());
+      }
    }
 }
 
@@ -56,6 +82,38 @@ class login extends base {
       }      
    }
    
+   
+   function checkPost() {
+
+      $param = array("name" => "123");
+      $this->setTwigEngine("login.html", $param);
+      
+      if (empty($_POST)) {
+         return false;
+      }
+ 
+      if (!empty($_POST["user"]) && !empty($_POST["password"])) {
+          
+          /* compare Form data with database entries */
+          $users = $this->db->getResults("users");
+
+          foreach ($users as $user) {
+
+              if ($user["user"] == $_POST["user"]) {
+
+                  if ($user["password"] == $_POST["password"]) {
+                     
+                     setcookie("users", $user["id"], time()+60*60*3);
+                     $this->redirect($user["id"]);
+                  }
+              } else {
+                  continue;
+              }
+          }
+          
+          $this->setTwigEngine("login.html", array("error" => true));
+      }
+   }
    
    
    function doesUserExist($id) {

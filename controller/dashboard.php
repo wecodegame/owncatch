@@ -1,7 +1,8 @@
 <?php
 
 
-class dashboard extends base{
+class dashboard {
+   
    function index() {
       
       $this->connect();
